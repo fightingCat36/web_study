@@ -29,10 +29,10 @@
 先看一段代码
 ```javascript
 console.log(1)
-function test (num) {
+function test () {
     console.log(2)
 }
-test(num)
+test()
 console.log(3)
 ```
 上面这段代码输出结果显而易见，因为是完全同步的过程，结果是
@@ -45,12 +45,12 @@ console.log(3)
 
 ```javascript
 console.log(1)
-function test (num) {
+function test () {
     setTimeout(() => {
         console.log(2)
     })
 }
-test(num)
+test()
 console.log(3)
 ```
 这个时候，执行test函数时，由于setTimeout定时器的使用（异步），似的这部分内部被推入一个任务队列，JavaScript单线程首先跳过test的执行，先执行完后面同步代码，等到同步代码都执行结束后，在从异步事件队列中取出之前放进队列的test任务，执行里面的逻辑，所以最后输出的结果顺序为
