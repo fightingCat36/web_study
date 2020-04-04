@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2020-03-12 21:25:38
- * @LastEditTime: 2020-03-14 21:56:23
+ * @LastEditTime: 2020-03-15 22:55:18
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: /web_study/src/前端基础/JavaScript基础/js-web-api.md
@@ -62,15 +62,29 @@ p1.nodeName
 </script>
 ```
 # DOM操作性能
-
-
+频繁操作dom是十分消耗性能的，将多次频繁操作改为一次性操作，对dom操作做缓存
 
 # DOM相关问题
 ## 1. DOM是哪种数据结构
-
+树
 ## 2. DOM操作常用API
-
+```javascript
+document.getElementById()
+document.getElementsByTagName()
+document.getElemenetsByClassName()
+document.querySelector()
+document.querySelectorAll()
+```
 ## 3. attribute和property的区别
 attribute设置的是标签上可见的属性，property是js设置dom对象属性，标签上不可见（都有可能造成重绘重排）
 ## 4. 高性能的一次性插入多个dom节点
-
+```javascript
+const list = document.querySelector('.list')
+const frag = document.createDocumentFragment()
+for (let i = 0; i < 10; i ++) {
+    const li = document.createElement('li')
+    li.innerText = `this is li ${i}`
+    frag.appendChild(li)
+}
+list.appendChild(frag)
+```
